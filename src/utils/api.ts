@@ -1,18 +1,18 @@
-// https://exchangeratesapi.io/
-const BASE_URL = 'http://api.exchangeratesapi.io/v1';
-const API_KEY = 'REPLACE_WITH_YOUR_API_KEY'
+import { FailedReturn } from "./interfaces";
 
-// TODO: what is the response type in the Promise? We should avoid using 'any'
-type API = (params: {
-  endpoint: string,
+const BASE_URL = process.env.REACT_EXCHANGE_RATES_BASE_URL ?? "";
+const API_KEY = process.env.REACT_EXCHANGE_RATES_API_KEY ?? "";
+
+export type API = (params: {
+  endpoint: string;
   params: {
-    base?: string,
-  },
-}) => Promise<any>;
+    base?: string;
+  };
+}) => Promise<Response | FailedReturn>;
 
 const api: API = ({ endpoint, params = {} }) => {
   const searchParams = new URLSearchParams(params);
-  searchParams.append('access_key', API_KEY);
+  searchParams.append("access_key", API_KEY);
   const queryString = searchParams.toString();
 
   return fetch(`${BASE_URL}${endpoint}?${queryString}`);
@@ -20,16 +20,19 @@ const api: API = ({ endpoint, params = {} }) => {
 
 export const fetchRates = async (baseCurrency: string) => {
   try {
-    const response = await api({ endpoint: '/latest', params: { base: baseCurrency } });
-    const responseText = await response.text();
-    const { rates, error } = JSON.parse(responseText);
+    const response = await api({
+      endpoint: "/latest",
+      params: { base: baseCurrency },
+    });
+    const responseText: string = await response.text();
+    const { rates, error }: any = JSON.parse(responseText);
 
     if (error) {
       throw new Error(error);
     }
 
     if (!rates || !Object.keys(rates).length) {
-      throw new Error('Could not fetch rates.');
+      throw new Error("Could not fetch rates.");
     }
 
     return rates;

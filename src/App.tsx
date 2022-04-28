@@ -1,25 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import './App.css';
+import "./App.css";
 
-import Header from './components/Header';
-import { fetchRates } from './utils/api';
+import Header from "./components/Header";
+import CurrencyConverter from "./components/CurrencyConverter";
 
 const App = () => {
-  const handleSubmit = async () => {
-    try {
-      const rates = await fetchRates('EUR');
-      console.log(rates);
-    } catch (e: any) {
-      console.error(e.message);
-    }
-  };
-
   return (
     <div className="app">
       <div className="app__content">
         <Header />
-        <button onClick={handleSubmit}>get rates</button>
+        <CurrencyConverter />
       </div>
     </div>
   );

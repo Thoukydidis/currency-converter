@@ -1,0 +1,8 @@
+.errorMessage {
+  color: red;
+  font-size: small;
+}
+
+.inputConverter {
+  display: flex;
+}
