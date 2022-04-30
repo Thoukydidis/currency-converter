@@ -16,16 +16,24 @@ const HistoryOfConverted = (props: Props) => {
   const historyTitle: string = "Previous amounts";
   const clearHistory: string = "CLEAR ALL";
 
+  const removeFromHistory = (id: string) => {
+    const updatedHistory: HistoryLabel[] = history.filter(
+      (item) => item.id !== id
+    );
+    setHistory(updatedHistory);
+  };
+
   const renderHistory = () => {
     return history.map((historyItem) => {
       return (
         <ConvertedValue
+          key={historyItem.id}
           currencyFrom={historyItem.currencyFrom}
           currencyTo={historyItem.currencyTo}
           convertedValue={historyItem.convertedAmount}
           isHistory={true}
         >
-          <IconButton onClick={() => setHistory([])}>
+          <IconButton onClick={() => removeFromHistory(historyItem.id)}>
             <CloseIcon />
           </IconButton>
         </ConvertedValue>

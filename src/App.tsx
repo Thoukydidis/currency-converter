@@ -7,6 +7,7 @@ import HistoryOfConverted from "./components/HistoryOfConverted";
 import { Rates, HistoryLabel } from "./utils/interfaces";
 import { IconButton } from "@mui/material";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
   const [rates, setRates] = useState<Rates>();
@@ -19,17 +20,17 @@ const App = () => {
     if (!!rates) {
       const converted = rates?.[currencyTo.toUpperCase()];
       converted && setConvertedValue(converted?.toString());
-      convertedValue &&
-        setHistory([
-          {
-            amount: "1",
-            currencyFrom: currencyFrom,
-            equals: "equals",
-            convertedAmount: convertedValue,
-            currencyTo: currencyTo,
-          },
-          ...history,
-        ]);
+      setHistory([
+        {
+          id: uuidv4(),
+          amount: "1",
+          currencyFrom: currencyFrom,
+          equals: "equals",
+          convertedAmount: converted?.toString(),
+          currencyTo: currencyTo,
+        },
+        ...history,
+      ]);
     }
   }, [rates]);
 
@@ -40,7 +41,6 @@ const App = () => {
     setCurrencyFrom(currencyTo);
   };
 
-  console.log("ratesParent:", rates);
   return (
     <div className="app">
       <div className="app__content">

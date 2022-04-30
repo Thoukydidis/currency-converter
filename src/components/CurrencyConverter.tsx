@@ -73,13 +73,16 @@ const CurrencyConverter = (props: Props) => {
   }
   const handleSubmit = async () => {
     try {
+      const separatedValues: Array<string> = inputValue.split(" ");
       const response: Rates | FailedReturn = await fetchRates(
-        currencyFrom?.toUpperCase()
+        separatedValues[1]?.toUpperCase()
       );
       if (isError(response)) {
         setErrorMessage(response);
         setRates(undefined);
       } else {
+        setCurrencyFrom(separatedValues[1]);
+        setCurrencyTo(separatedValues[3]);
         setRates(response);
         setErrorMessage(undefined);
       }
@@ -123,8 +126,6 @@ const CurrencyConverter = (props: Props) => {
       setIsValid(true);
       setValidationMessage("");
       // setAmount(separatedValues[0]);
-      setCurrencyFrom(separatedValues[1]);
-      setCurrencyTo(separatedValues[3]);
     } else if (separatedValues[1] && !isValidCurrency(separatedValues[1])) {
       setIsValid(false);
       setValidationMessage(`Base '${separatedValues[1]}' is not supported.`);

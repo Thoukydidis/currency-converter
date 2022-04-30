@@ -24,11 +24,13 @@ const ConvertedValue = (props: Props) => {
       <div className={isHistory ? "historyBox" : "convertedBox"}>
         <div className="convertedInfoContainer">
           <span>
-            {amount} {currencyFromFull ? currencyFromFull : currencyFrom}{" "}
+            {amount}{" "}
+            {currencyFromFull ? currencyFromFull : currencyFrom.toUpperCase()}{" "}
             {equals}
           </span>
           <span className="convertedValue">
-            {convertedValue} {currencyToFull ? currencyToFull : currencyTo}
+            {convertedValue}{" "}
+            {currencyToFull ? currencyToFull : currencyTo.toUpperCase()}
           </span>
         </div>
         {children}

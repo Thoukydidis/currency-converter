@@ -355,6 +355,7 @@ export interface FailedReturn {
 }
 
 export interface HistoryLabel {
+  id: string;
   amount: string;
   currencyFrom: string;
   equals: string;
