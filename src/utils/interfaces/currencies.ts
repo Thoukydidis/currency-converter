@@ -167,6 +167,7 @@ export interface Rates {
   ZMK: number;
   ZMW: number;
   ZWL: number;
+  [key: string]: number;
 }
 
 export type CurrenciesCode =
@@ -348,5 +349,15 @@ export interface RetrieveCurrenciesResponse {
 }
 
 export interface FailedReturn {
+  code: string;
+  message: string;
   [key: string]: any;
+}
+
+export interface HistoryLabel {
+  amount: string;
+  currencyFrom: string;
+  equals: string;
+  convertedAmount: string;
+  currencyTo: string;
 }

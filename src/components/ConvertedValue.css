@@ -1,0 +1,34 @@
+.convertedBox {
+  margin: 10px 0 10px 0;
+  padding: 5px 10px 5px 10px;
+  color: black;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+}
+
+.convertedInfoContainer {
+  display: grid;
+}
+
+.compareArrowsIcon {
+  transform: rotate(90deg);
+}
+
+.historyBox {
+  margin: 10px 0 10px 0;
+  padding: 5px 10px 5px 10px;
+  color: black;
+  background-color: beige;
+  border-radius: 5px;
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+}
+
+.convertedValue {
+  font-size: large;
+  font-weight: 400;
+}
