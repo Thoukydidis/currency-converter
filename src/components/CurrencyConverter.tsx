@@ -65,7 +65,7 @@ const CurrencyConverter = (props: Props) => {
   const setAutoClose = () => {
     setTimeout(() => {
       setOpen(false);
-    }, 5000);
+    }, 3000);
   };
 
   function isError(obj: any): obj is FailedReturn {
@@ -98,7 +98,6 @@ const CurrencyConverter = (props: Props) => {
   //       currencyTo,
   //       amount.toString()
   //     );
-  //     console.log(rates);
   //   } catch (e: any) {
   //     console.error(e.message);
   //   }
@@ -137,8 +136,6 @@ const CurrencyConverter = (props: Props) => {
       setValidationMessage(structureErrorMessage);
     }
   };
-  console.log("errorMessage:", errorMessage);
-  console.log("isOpen:", open);
   return (
     <>
       <TextField

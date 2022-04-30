@@ -1,4 +1,8 @@
 .historyContainer {
+  min-height: 250px;
+}
+
+.historyLabel {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -6,4 +10,10 @@
 
 .clearAll {
   cursor: pointer;
+}
+
+.paginationWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
