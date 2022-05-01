@@ -7,7 +7,7 @@ import { HistoryLabel } from "../utils/interfaces";
 import _ from "lodash";
 import Pagination from "@mui/material/Pagination";
 
-interface Props {
+export interface Props {
   history: HistoryLabel[];
   setHistory: React.Dispatch<React.SetStateAction<HistoryLabel[] | []>>;
 }
@@ -53,7 +53,7 @@ const HistoryOfConverted = (props: Props) => {
   const renderHistory = () => {
     return (
       itemsPerPage[page - 1] &&
-      itemsPerPage[page - 1].map((historyItem) => {
+      itemsPerPage[page - 1].map((historyItem, index) => {
         return (
           <ConvertedValue
             key={historyItem.id}
@@ -62,7 +62,10 @@ const HistoryOfConverted = (props: Props) => {
             convertedValue={historyItem.convertedAmount}
             isHistory={true}
           >
-            <IconButton onClick={() => removeFromHistory(historyItem.id)}>
+            <IconButton
+              onClick={() => removeFromHistory(historyItem.id)}
+              data-testid={`removeItemFromHistoryButtonId:${index}`}
+            >
               <CloseIcon />
             </IconButton>
           </ConvertedValue>

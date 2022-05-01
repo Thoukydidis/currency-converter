@@ -10,7 +10,7 @@ import _ from "lodash";
 import CloseIcon from "@mui/icons-material/Close";
 import { checkValidations } from "../utils/inputValidations";
 
-interface Props {
+export interface Props {
   currencyFrom: string;
   rates?: Rates;
   setRates: React.Dispatch<React.SetStateAction<Rates | undefined>>;
@@ -125,7 +125,11 @@ const CurrencyInputConverter = (props: Props) => {
         value={inputValue}
         InputProps={{
           endAdornment: (
-            <IconButton onClick={handleSubmit} disabled={!isValid}>
+            <IconButton
+              onClick={handleSubmit}
+              disabled={!isValid}
+              data-testid="convertButton"
+            >
               <SearchIcon />
             </IconButton>
           ),
@@ -139,6 +143,7 @@ const CurrencyInputConverter = (props: Props) => {
         <Alert
           action={
             <IconButton
+              data-testid="alertButtonId"
               aria-label="close"
               color="inherit"
               size="small"

@@ -2,7 +2,7 @@ import React from "react";
 import CurrencyList from "currency-list";
 import "./ConvertedValue.css";
 
-interface Props {
+export interface Props {
   currencyFrom: string;
   currencyTo: string;
   convertedValue: string;
