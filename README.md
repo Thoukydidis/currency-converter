@@ -86,6 +86,9 @@ Some unit tests are also created by Jest library and react testing library.
 
 Due to limited time a restricted features could be demonstrate in the specific exercise.
 
+Making the Alert common reusable.
+The first upgrade implementation that I would have done if I had some more time it would be to make the Alert of the Success or Failed communication with BE () reusable because as it is now it indeed satisfy our needs for this solution but with the first upgrade or integration with another endpoint it use it would be a necessity and would save a lot of time.
+
 Authentication / Authorization.
 Since there was not any specific business need behind the exercise I do not know if
 an authentication authorization tool / implementation could make a difference. By this we could achieve to store the exchange rate history for each user. As it is now the history is stored only during run time.
