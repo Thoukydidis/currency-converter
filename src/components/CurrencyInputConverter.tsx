@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import "./CurrencyConverter.css";
+import "./CurrencyInputConverter.css";
 import { fetchRates } from "../utils/api";
 import { Rates, FailedReturn, ValidationReturns } from "../utils/interfaces";
 import Alert from "@mui/material/Alert";
@@ -19,7 +19,7 @@ interface Props {
   currencyTo: string;
 }
 
-const CurrencyConverter = (props: Props) => {
+const CurrencyInputConverter = (props: Props) => {
   const {
     setRates,
     currencyFrom,
@@ -159,4 +159,4 @@ const CurrencyConverter = (props: Props) => {
   );
 };
 
-export default CurrencyConverter;
+export default CurrencyInputConverter;

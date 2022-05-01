@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import CurrencyConverter from "./components/CurrencyConverter";
+import CurrencyInputConverter from "./components/CurrencyInputConverter";
 import ConvertedValue from "./components/ConvertedValue";
 import HistoryOfConverted from "./components/HistoryOfConverted";
 import { Rates, HistoryLabel } from "./utils/interfaces";
@@ -45,7 +45,7 @@ const App = () => {
     <div className="app">
       <div className="app__content">
         <Header />
-        <CurrencyConverter
+        <CurrencyInputConverter
           rates={rates}
           currencyFrom={currencyFrom}
           currencyTo={currencyTo}

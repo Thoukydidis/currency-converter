@@ -19,10 +19,12 @@ export const notSupportedCurrency = (wrongCurrency: string) => {
     errorMessage: `Base '${wrongCurrency}' is not supported.`,
   };
 };
+
 export const structureValidationError = {
   isValid: false,
   errorMessage: structureErrorMessage,
 };
+
 export const checkValidations = (
   separatedValues: string[]
 ): ValidationReturns => {
