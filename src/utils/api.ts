@@ -1,7 +1,7 @@
 import { FailedReturn } from "./interfaces";
 
-const BASE_URL = process.env.REACT_EXCHANGE_RATES_BASE_URL ?? "";
-const API_KEY = process.env.REACT_EXCHANGE_RATES_API_KEY ?? "";
+const BASE_URL = process.env.REACT_APP_EXCHANGE_RATES_BASE_URL ?? "";
+const API_KEY = process.env.REACT_APP_EXCHANGE_RATES_API_KEY ?? "";
 
 export type API<T> = (params: {
   endpoint: string;
