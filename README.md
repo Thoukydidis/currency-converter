@@ -57,8 +57,8 @@ It may be challenging to complete all the features within the allocated timefram
 
 1. Fork or clone this repo into your publicly accessible git profile.
 2. Raise a Pull Request (PR) with your solution.
-    - We encourage you to use git appropriately.
-    - For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes.
+   - We encourage you to use git appropriately.
+   - For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes.
 
 _⚠️ Please ensure the PR is raised on your repository and not this repository._
 
@@ -70,3 +70,44 @@ _⚠️ The screenshots use AUD as a base currency but this is only for illustra
 <img src="assets/screen-02.png" alt="screenshot" style="max-width: 700px"/>
 <img src="assets/screen-03.png" alt="screenshot" style="max-width: 700px"/>
 <img src="assets/screen-04.png" alt="screenshot" style="max-width: 700px"/>
+
+### 🌟 Deliverables
+
+All the requested features are delivered. Please follow the same instractions in order to run the app with the only addition of the creation of the .env file at the root of the repository with two values as shown below:
+
+REACT_APP_EXCHANGE_RATES_BASE_URL="http://api.exchangeratesapi.io/v1"
+REACT_APP_EXCHANGE_RATES_API_KEY="exampleMockKey"
+
+for the "exampleMockKey" please use your own key. Keep in mind that the free version of the keys are very restricted into request and for using a specific endpoints.
+
+Some unit tests are also created by Jest library and react testing library.
+
+### 🌟 Future Improvements
+
+Due to limited time a restricted features could be demonstrate in the specific exercise.
+
+Authentication / Authorization.
+Since there was not any specific business need behind the exercise I do not know if
+an authentication authorization tool / implementation could make a difference. By this we could achieve to store the exchange rate history for each user. As it is now the history is stored only during run time.
+
+Routing.
+Since the requirements was specific for a single page app there was not a need for routing. but the history info could take place into a different url.
+
+Global State.
+A useContext hook or react redux could be used to store information like history so any child component could have access to it directly without passing through all the hierarchy of components as properties. Since the hierarchy was small there was no need to do so.
+
+Responsive.
+A mobile friendly design could take place in order for the app to be useful and with with user experience also on mobile devices.
+
+Currency Converter Restrictions.
+Restricted into just exchanging EUR to specific currencies and the wise versa was not accepted from the third party provider. According to their documentation there were a variate of endpoints that could be used and upgrade the possibilities of the app.
+
+Tailwind Css or SASS.
+Tailwind css or SASS/SCSS could be used to satisfy the face needs of the app, with the addition that these frameworks provides you grouping and reusing styles without the need of applying specific for every element. Colors could be a global variable and storing the hex codes at a single palette file. This approach will also help in the future if a Dark mode implementation needs to be done.
+
+Wordings.
+Wordings should be kept into a single file so that by the need of translating them could be much more easy especially with the use of modern libraries.
+
+_⚠️ The screenshot show the appearance of the final output of the exercise and how it should look like after you run the app and configure the .env file._
+
+<img src="assets/screen-05.png" alt="screenshot" style="max-width: 700px" />
