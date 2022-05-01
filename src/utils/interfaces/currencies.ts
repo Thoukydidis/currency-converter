@@ -362,3 +362,8 @@ export interface HistoryLabel {
   convertedAmount: string;
   currencyTo: string;
 }
+
+export interface ValidationReturns {
+  errorMessage: string;
+  isValid: boolean;
+}

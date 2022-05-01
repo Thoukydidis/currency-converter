@@ -3,12 +3,12 @@ import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./CurrencyConverter.css";
 import { fetchRates } from "../utils/api";
-import { currenciesCode } from "../utils/currencies";
-import { Rates, FailedReturn } from "../utils/interfaces";
+import { Rates, FailedReturn, ValidationReturns } from "../utils/interfaces";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import _ from "lodash";
 import CloseIcon from "@mui/icons-material/Close";
+import { checkValidations } from "../utils/inputValidations";
 
 interface Props {
   currencyFrom: string;
@@ -38,8 +38,6 @@ const CurrencyConverter = (props: Props) => {
 
   const successMessage: string =
     "You have successfully received the updated rates.";
-  const structureErrorMessage: string =
-    "Invalid input structure. Clear the input to see the structure.";
 
   useEffect(() => {
     if (!!errorMessage || !_.isEmpty(rates)) {
@@ -103,39 +101,16 @@ const CurrencyConverter = (props: Props) => {
   //   }
   // };
 
-  const isValidCurrency = (value: string): boolean => {
-    return !!currenciesCode[value?.toUpperCase()];
-  };
-
   const handleOnChange = (value: string) => {
     setInputValue(value);
     const separatedValues: Array<string> = value.split(" ");
+    const validationResults: ValidationReturns =
+      checkValidations(separatedValues);
 
-    const isValid: boolean =
-      separatedValues[0] === "1" &&
-      // TODO uncomment and delete above line in case of directly use of the converted endpoint
-      // !!Number(separatedValues[0]) &&
-      isValidCurrency(separatedValues[1]) &&
-      separatedValues[2]?.toUpperCase() === "TO" &&
-      isValidCurrency(separatedValues[3]) &&
-      separatedValues[3] !== separatedValues[1] &&
-      separatedValues.length === 4;
-
-    if (isValid) {
-      setIsValid(true);
-      setValidationMessage("");
-      // setAmount(separatedValues[0]);
-    } else if (separatedValues[1] && !isValidCurrency(separatedValues[1])) {
-      setIsValid(false);
-      setValidationMessage(`Base '${separatedValues[1]}' is not supported.`);
-    } else if (separatedValues[3] && !isValidCurrency(separatedValues[3])) {
-      setIsValid(false);
-      setValidationMessage(`Base '${separatedValues[3]}' is not supported.`);
-    } else {
-      setIsValid(false);
-      setValidationMessage(structureErrorMessage);
-    }
+    setIsValid(validationResults.isValid);
+    setValidationMessage(validationResults.errorMessage);
   };
+
   return (
     <>
       <TextField
